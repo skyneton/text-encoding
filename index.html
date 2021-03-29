@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="logo.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./css/main.css" />
+    <script type="text/javascript" src="./scripts/encoding.min.js" defer></script>
+    <script type="text/javascript" src="./scripts/main.min.js" defer></script>
+    <title>텍스트 인코딩 변환 - 텍스트를 UTF-8로 변환</title>
+    <meta name="og:image" content="./logo.svg">
+    <meta name="og:description" content="텍스트 파일 인코딩을 UTF-8로 변환합니다.">
+    <meta name="og:title" content="텍스트 인코딩 변환 - 텍스트를 UTF-8로 변환">
+</head>
+<body>
+    <header>
+        <select class="encoding_type" title="이전 인코딩 형식">
+            <option value="auto" data-lang selected>자동</option>
+        </select>
+        <input type="file" class="select_encoding_file" accept="text/*" multiple>
+        <div class="file_select_box">
+            <svg viewBox="0 0 24 24" class="text_file_icon">
+                <path d="m20.5 24h-12c-1.378 0-2.5-1.121-2.5-2.5v-15c0-1.379 1.122-2.5 2.5-2.5h12c1.378 0 2.5 1.121 2.5 2.5v15c0 1.379-1.122 2.5-2.5 2.5zm-12-19c-.827 0-1.5.673-1.5 1.5v15c0 .827.673 1.5 1.5 1.5h12c.827 0 1.5-.673 1.5-1.5v-15c0-.827-.673-1.5-1.5-1.5z"/>
+                <path d="m4.5 21h-1c-1.378 0-2.5-1.121-2.5-2.5v-16c0-1.379 1.122-2.5 2.5-2.5h12c1.378 0 2.5 1.121 2.5 2.5 0 .276-.224.5-.5.5s-.5-.224-.5-.5c0-.827-.673-1.5-1.5-1.5h-12c-.827 0-1.5.673-1.5 1.5v16c0 .827.673 1.5 1.5 1.5h1c.276 0 .5.224.5.5s-.224.5-.5.5z"/>
+                <path d="m18.5 17h-8c-.276 0-.5-.224-.5-.5s.224-.5.5-.5h8c.276 0 .5.224.5.5s-.224.5-.5.5z"/>
+                <path d="m18.5 21h-8c-.276 0-.5-.224-.5-.5s.224-.5.5-.5h8c.276 0 .5.224.5.5s-.224.5-.5.5z"/>
+                <path d="m18.5 13h-8c-.276 0-.5-.224-.5-.5s.224-.5.5-.5h8c.276 0 .5.224.5.5s-.224.5-.5.5z"/>
+                <path d="m18.5 9h-8c-.276 0-.5-.224-.5-.5s.224-.5.5-.5h8c.276 0 .5.224.5.5s-.224.5-.5.5z"/>
+                </svg>
+            <button class="file_select_btn_design not_drag" data-lang>파일 선택</button>
+            <div class="fileadd_info not_drag" data-lang>클릭하거나 텍스트 파일을 드래그 드롭 해주세요.</div>
+        </div>
+    </header>
+    <div class="encode_result" style="display: none;"></div>
+</body>
+</html>
