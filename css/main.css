@@ -32,7 +32,7 @@
     max-width: 1200px;
     min-width: 200px;
     max-height: calc(100vh - 280px);
-    min-height: 40px;
+    min-height: 48px;
     overflow-y: scroll;
     margin: 10px auto;
     border: 1px solid black;
@@ -93,10 +93,10 @@
     background-color: rgba(255, 240, 240, .4);
     border-radius: 7px;
     flex-shrink: 0;
-}.encode_result_box:not(.encode_result_box[finished]) .encode_item_download {
     position: relative;
 }.encode_result_box[finished] .encode_item_download {
     cursor: pointer;
+    position: static;
 }
 
 .loading_btn_ani {
@@ -135,9 +135,6 @@
     0% {transform: rotate(0deg);}
     50% {transform: rotate(180deg);}
     100% {transform: rotate(180deg);}
-}
-
-.download_svg {
 }
 
 .not_drag {

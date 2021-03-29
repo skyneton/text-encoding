@@ -65,7 +65,14 @@ const fileEncode = file => {
     });
 
     fileName.onclick = () => {
-        if(url) window.open(url);
+        if(url) {
+            const popup = window.open("", `viewer_${file.name}`, "menubar=no, resizable=yes, scrollbars=yes,status=no, width=500px, height=620px");
+            popup.document.title = `Viewer - ${file.name}`;
+            const iframe = popup.document.createElement("iframe");
+            iframe.setAttribute("style", "position: fixed; left: 0; right: 0; top: 0; bottom: 0; width: 100%; height: 100%;");
+            iframe.src = url;
+            popup.document.body.appendChild(iframe);
+        }
     }
 
     downloadBtn.onclick = () => {
