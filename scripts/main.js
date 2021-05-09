@@ -91,16 +91,18 @@ const fileEncode = file => {
 
     fileName.onclick = () => {
         if(url) {
+            if(fileName.previewSrc != null) window.open(fileName.previewSrc);
             // const popup = window.open("", `viewer_${file.name}`, "menubar=no, resizable=yes, scrollbars=yes,status=no, width=500px, height=620px");
             // popup.document.title = `Viewer - ${file.name}`;
-            // fetch(url).then(r => r.blob()).then(blob => {
+            fetch(url).then(r => r.blob()).then(blob => {
+                window.open(fileName.previewSrc = URL.createObjectURL(new Blob(["\ufeff", blob], { type: "text/plain" })));
+            });
             //     const reader = new FileReader();
             //     reader.onloadend = () => {
             //         popup.document.body.innerText = reader.result;
             //     };
             //     reader.readAsText(blob, "UTF-8");
             // });
-            window.open(url);
         }
     }
 
