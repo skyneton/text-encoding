@@ -35,30 +35,55 @@ const dataSort = (data, callback) => {
 }
 
 const fileEncode = file => {
-    if(!file.type.startsWith("text")) return;
+    if(!(file.type == "" || file.type.toLowerCase().startsWith("text"))) return;
     const fileDirector = document.getElementsByClassName("encode_result")[0];
     if(fileDirector.style.display == "none") fileDirector.style.display = null;
 
+    const type = document.getElementsByClassName("encoding_type")[0].value;
+
     const box = document.createElement("div");
     box.setAttribute("class", "encode_result_box");
+
     const fileName = document.createElement("span");
     fileName.setAttribute("class", "encode_item_fileName not_drag");
+    fileName.innerText = file.name;
+
+    const rightBox = document.createElement("div");
+    rightBox.setAttribute("class", "encode_result_box_right");
+    
+    const typeInfo = document.createElement("span");
+    typeInfo.setAttribute("class", "before_encoding_type not_drag");
+    typeInfo.innerText = type;
+
     const downloadBtn = document.createElement("button");
     downloadBtn.setAttribute("class", "encode_item_download not_drag");
     downloadBtn.appendChild(loadBox());
-    fileName.innerText = file.name;
+
+    rightBox.appendChild(typeInfo);
+    rightBox.appendChild(downloadBtn);
+
     box.appendChild(fileName);
-    box.appendChild(downloadBtn);
+    box.appendChild(rightBox);
 
     let url;
     encoding.start(file, {
-        "type": document.getElementsByClassName("encoding_type")[0].value,
-        success(result) {
+        "type": type,
+        success(result, before) {
             url = result;
             box.setAttribute("finished", true);
             const temp = [...downloadBtn.children];
             for(let i = 0; i < temp.length; i++) {
                 temp[i].remove();
+            }
+            if(type !== before) {
+                typeInfo.innerText = before;
+                typeInfo.setAttribute("title", (() => {
+                    switch(document.title) {
+                        case "텍스트 인코딩 변환 - 텍스트를 UTF-8로 변환": return "감지됨";
+                        case "テキストエンコードへんかん - テキストをUTF-8へんかん": return "かんち";
+                        default: return "Detected";
+                    }
+                })());
             }
             downloadBtn.appendChild(downloadSvg());
         }
@@ -66,12 +91,16 @@ const fileEncode = file => {
 
     fileName.onclick = () => {
         if(url) {
-            const popup = window.open("", `viewer_${file.name}`, "menubar=no, resizable=yes, scrollbars=yes,status=no, width=500px, height=620px");
-            popup.document.title = `Viewer - ${file.name}`;
-            const iframe = popup.document.createElement("iframe");
-            iframe.setAttribute("style", "position: fixed; left: 0; right: 0; top: 0; bottom: 0; width: 100%; height: 100%;");
-            iframe.src = url;
-            popup.document.body.appendChild(iframe);
+            // const popup = window.open("", `viewer_${file.name}`, "menubar=no, resizable=yes, scrollbars=yes,status=no, width=500px, height=620px");
+            // popup.document.title = `Viewer - ${file.name}`;
+            // fetch(url).then(r => r.blob()).then(blob => {
+            //     const reader = new FileReader();
+            //     reader.onloadend = () => {
+            //         popup.document.body.innerText = reader.result;
+            //     };
+            //     reader.readAsText(blob, "UTF-8");
+            // });
+            window.open(url);
         }
     }
 

@@ -52,7 +52,7 @@ function Encoding() {
             if(type !== "auto") {
                 fileReaderLoad(file, new FileReader(), type).then(result => {
                     resolve({
-                        "result": URL.createObjectURL(new Blob(["\ufeff", result], { type: "text/plain" })),
+                        "result": URL.createObjectURL(new Blob([result], { type: "text/plain" })),
                         "before": type,
                     });
                 });
@@ -67,14 +67,14 @@ function Encoding() {
                     if(data.url != undefined) URL.revokeObjectURL(data.url);
                     data.min = size;
                     data.before = types[i];
-                    data.url = URL.createObjectURL(new Blob(["\ufeff", result], { type: "text/plain" }));
+                    data.url = URL.createObjectURL(new Blob([result], { type: "text/plain" }));
                     break;
                 }
                 if(data.min == undefined || data.min > size) {
                     data.min = size;
                     data.before = types[i];
                     if(data.url != undefined) URL.revokeObjectURL(data.url);
-                    data.url = URL.createObjectURL(new Blob(["\ufeff", result], { type: "text/plain" }));
+                    data.url = URL.createObjectURL(new Blob([result], { type: "text/plain" }));
                     continue;
                 }
             }
@@ -117,7 +117,7 @@ function Encoding() {
                 if(type !== "auto") {
                     fileReaderLoad(file, new FileReader(), type).then(result => {
                         resolve({
-                            "result": URL.createObjectURL(new Blob(["\ufeff", result], { type: "text/plain" })),
+                            "result": URL.createObjectURL(new Blob([result], { type: "text/plain" })),
                             "before": type,
                         });
                     });
@@ -132,14 +132,14 @@ function Encoding() {
                         if(data.url != undefined) URL.revokeObjectURL(data.url);
                         data.min = size;
                         data.before = types[i];
-                        data.url = URL.createObjectURL(new Blob(["\ufeff", result], { type: "text/plain" }));
+                        data.url = URL.createObjectURL(new Blob([result], { type: "text/plain" }));
                         break;
                     }
                     if(data.min == undefined || data.min > size) {
                         data.min = size;
                         data.before = types[i];
                         if(data.url != undefined) URL.revokeObjectURL(data.url);
-                        data.url = URL.createObjectURL(new Blob(["\ufeff", result], { type: "text/plain" }));
+                        data.url = URL.createObjectURL(new Blob([result], { type: "text/plain" }));
                         continue;
                     }
                 }

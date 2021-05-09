@@ -30,7 +30,7 @@
 .encode_result {
     width: 80%;
     max-width: 1200px;
-    min-width: 200px;
+    min-width: 300px;
     max-height: calc(100vh - 280px);
     min-height: 48px;
     overflow-y: scroll;
@@ -86,13 +86,25 @@
 }.encode_result_box[finished] .encode_item_fileName {
     cursor: pointer;
 }
+.encode_result_box_right {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+}
+.before_encoding_type {
+    width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-right: 10px;
+    white-space: nowrap;
+    display: inline-block;
+}
 .encode_item_download {
     width: 30px;
     height: 30px;
     cursor: progress;
     background-color: rgba(255, 240, 240, .4);
     border-radius: 7px;
-    flex-shrink: 0;
     position: relative;
 }.encode_result_box[finished] .encode_item_download {
     cursor: pointer;
