@@ -101,6 +101,57 @@ function Encoding() {
                 });
             });
         });
+
+        
+
+    const fileReaderLoad = (file, fileReader, type = "UTF-8") => {
+        return new Promise(resolve => {
+            fileReader.onloadend = () => {
+                resolve(fileReader.result);
+            }
+
+            fileReader.readAsText(file, type);
+        });
+    };
+
+    const getEncodingResult = (file, types, type = "auto") => {
+        return new Promise(async resolve => {
+            if(type !== "auto") {
+                fileReaderLoad(file, new FileReader(), type).then(result => {
+                    resolve({
+                        "result": URL.createObjectURL(new Blob([result], { type: "text/plain" })),
+                        "before": type,
+                    });
+                });
+                return;
+            }
+            const data = {};
+            for(let i = 0; i < types.length; i++) {
+                const result = await fileReaderLoad(file, new FileReader(), types[i]);
+                // const size = (getArr(result.match(/�/g)).concat(getArr(result.match(/đ/g))).concat(getArr(result.match(/ў/g))).concat(getArr(result.match(/Ą/g))).concat(getArr(result.match(/Ẅ/g)))).length;
+                const size = (result.match(/�/g) || result.match(/đ/g) || result.match(/ў/g) || result.match(/Ą/g) || result.match(/в/g) || result.match(/Ṁ/g) || result.match(/À/g) || result.match(/¾/g) || result.match(/ˇ/g) || result.match(/Α/g) || []).length;
+                if(size == 0) {
+                    if(data.url != undefined) URL.revokeObjectURL(data.url);
+                    data.min = size;
+                    data.before = types[i];
+                    data.url = URL.createObjectURL(new Blob([result], { type: "text/plain" }));
+                    break;
+                }
+                if(data.min == undefined || data.min > size) {
+                    data.min = size;
+                    data.before = types[i];
+                    if(data.url != undefined) URL.revokeObjectURL(data.url);
+                    data.url = URL.createObjectURL(new Blob([result], { type: "text/plain" }));
+                    continue;
+                }
+            }
+
+            resolve({
+                "result" : data.url,
+                "before": data.before,
+            });
+        });
+    };
     };
 
     const getThreadMessage = e => {
