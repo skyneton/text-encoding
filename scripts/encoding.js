@@ -35,7 +35,7 @@ function Encoding() {
             if(type !== "auto") {
                 fileReaderLoad(file, new FileReader(), type).then(result => {
                     resolve({
-                        "result": URL.createObjectURL(new Blob([result], { type: "text/plain" })),
+                        "result": new Blob([result], { type: "text/plain" }),
                         "before": type,
                     });
                 });
@@ -45,19 +45,19 @@ function Encoding() {
             for(let i = 0; i < types.length; i++) {
                 const result = await fileReaderLoad(file, new FileReader(), types[i]);
                 // const size = (getArr(result.match(/�/g)).concat(getArr(result.match(/đ/g))).concat(getArr(result.match(/ў/g))).concat(getArr(result.match(/Ą/g))).concat(getArr(result.match(/Ẅ/g)))).length;
-                const size = (result.match(/�/g) || result.match(/đ/g) || result.match(/ў/g) || result.match(/Ą/g) || result.match(/в/g) || result.match(/Ṁ/g) || result.match(/À/g) || result.match(/¾/g) || result.match(/ˇ/g) || result.match(/Α/g) || result.match(//g) || []).length;
+                const size = (result.match(/⌒/g) || result.match(/�/g) || result.match(/đ/g) || result.match(/ў/g) || result.match(/Ą/g) || result.match(/в/g) || result.match(/Ṁ/g) || result.match(/À/g) || result.match(/¾/g) || result.match(/ˇ/g) || result.match(/Α/g) || result.match(//g) || []).length;
                 if(size == 0) {
                     if(data.url != undefined) URL.revokeObjectURL(data.url);
                     data.min = size;
                     data.before = types[i];
-                    data.url = URL.createObjectURL(new Blob([result], { type: "text/plain" }));
+                    data.url = new Blob([result], { type: "text/plain" });
                     break;
                 }
                 if(data.min == undefined || data.min > size) {
                     data.min = size;
                     data.before = types[i];
                     if(data.url != undefined) URL.revokeObjectURL(data.url);
-                    data.url = URL.createObjectURL(new Blob([result], { type: "text/plain" }));
+                    data.url = new Blob([result], { type: "text/plain" });
                     continue;
                 }
             }
@@ -134,7 +134,7 @@ function Encoding() {
         }
 
         types() {
-            return ["UTF-8", "IBM866", "ISO-8859-2", "ISO-8859-3", "ISO-8859-4", "ISO-8859-5", "ISO-8859-6", "ISO-8857-7", "ISO-8859-8", "ISO-8859-8-I", "ISO-8859-10", "ISO-8859-13", "ISO-8859-14", "ISO-8859-15", "ISO-8859-16", "KOI8-R", "KOI8-U", "macintosh", "windows-874", "windows-1250", "windows-1251", "windows-1252", "windows-1253", "windows-1254", "windows-1255", "windows-1256", "windows-1257", "windows-1258", "x-mac-cyrillic", "GBK", "gb18030", "Big5", "EUC-JP", "ISO-2022-JP", "Shift_JIS", "EUC-KR", "UTF-16BE", "UTF-16LE"];
+            return ["UTF-8", "IBM866", "ISO-8859-2", "ISO-8859-3", "ISO-8859-4", "ISO-8859-5", "ISO-8859-6", "ISO-8857-7", "ISO-8859-8", "ISO-8859-8-I", "ISO-8859-10", "ISO-8859-13", "ISO-8859-14", "ISO-8859-15", "ISO-8859-16", "KOI8-R", "KOI8-U", "macintosh", "windows-874", "windows-1250", "windows-1251", "windows-1252", "windows-1253", "windows-1254", "windows-1255", "windows-1256", "windows-1257", "windows-1258", "x-mac-cyrillic", "Big5", "EUC-JP", "ISO-2022-JP", "Shift_JIS", "EUC-KR", "UTF-16BE", "UTF-16LE", "GBK", "gb18030"];
         }
     }
 }

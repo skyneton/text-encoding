@@ -69,7 +69,7 @@ const fileEncode = file => {
     encoding.start(file, {
         "type": type,
         success(result, before) {
-            url = result;
+            url = URL.createObjectURL(result);
             box.setAttribute("finished", true);
             const temp = [...downloadBtn.children];
             for(let i = 0; i < temp.length; i++) {
