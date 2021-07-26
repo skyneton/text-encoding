@@ -32,11 +32,15 @@
     max-width: 1200px;
     min-width: 300px;
     max-height: calc(100vh - 280px);
-    min-height: 48px;
+    min-height: 30px;
     overflow-y: scroll;
     margin: 10px auto;
     border: 1px solid black;
 }
+.encode_result > *:nth-child(2n) {
+    background-color: rgba(200, 200, 200, 0.4);
+}
+
 .file_select_box {
     margin: 20px 40px;
     box-shadow: 0 0 0 10px rgb(204, 204, 204);
@@ -66,8 +70,7 @@
 
 .encode_result_box {
     display: flex;
-    margin: 4px;
-    padding: 5px;
+    padding: 7px 9px;
     border-bottom: 1px solid rgba(10, 10, 10, 0.4);
     align-items: center;
     justify-content: space-between;
@@ -109,6 +112,16 @@
 }.encode_result_box[finished] .encode_item_download {
     cursor: pointer;
     position: static;
+}
+
+.encode_item_remove {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    background-color: rgba(255, 240, 240, .4);
+    border-radius: 7px;
+    position: static;
+    margin-right: 5px;
 }
 
 .loading_btn_ani {
