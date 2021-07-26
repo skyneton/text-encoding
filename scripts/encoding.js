@@ -12,7 +12,7 @@ function Encoding() {
             worker = new Worker(WORKER_URL);
             worker.addEventListener("message", getThreadMessage);
 
-            IMPORT_SCRIPT = URL.createObjectURL(new Blob([`const getEncodingResult = ${getEncodingResult.toString()}`], {type: "text/javascript"}));
+            IMPORT_SCRIPT = URL.createObjectURL(new Blob([`const ${getEncodingResult.name} = ${getEncodingResult.toString()}`], {type: "text/javascript"}));
             worker.postMessage({
                 "type": "import",
                 "url": IMPORT_SCRIPT
