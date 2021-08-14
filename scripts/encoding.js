@@ -31,6 +31,39 @@ function Encoding() {
             });
         };
 
+        const getNumErrorText = str => {
+            // let n = str.match(/⌒/g)?.length ?? 0;
+            let n = str.match(/�/g)?.length ?? 0;
+            n += str.match(/đ/g)?.length ?? 0;
+            n += str.match(/ў/g)?.length ?? 0;
+            n += str.match(/Ą/g)?.length ?? 0;
+            n += str.match(/в/g)?.length ?? 0;
+            n += str.match(/Ṁ/g)?.length ?? 0;
+            n += str.match(/À/g)?.length ?? 0;
+            n += str.match(/ˇ/g)?.length ?? 0;
+            n += str.match(/¨/g)?.length ?? 0;
+            n += str.match(/´/g)?.length ?? 0;
+            n += str.match(/Α/g)?.length ?? 0;
+            n += str.match(/М/g)?.length ?? 0;
+            n += str.match(//g)?.length ?? 0;
+            n += str.match(//g)?.length ?? 0;
+            n += str.match(//g)?.length ?? 0;
+            n += str.match(//g)?.length ?? 0;
+            n += str.match(//g)?.length ?? 0;
+            n += str.match(//g)?.length ?? 0;
+            n += str.match(//g)?.length ?? 0;
+            n += str.match(//g)?.length ?? 0;
+            n += str.match(/਍/g)?.length ?? 0;
+            n += str.match(/ꫫ/g)?.length ?? 0;
+            n += str.match(//g)?.length ?? 0;
+            n += str.match(//g)?.length ?? 0;
+            n += str.match(//g)?.length ?? 0;
+            n += str.match(//g)?.length ?? 0;
+            n += str.match(//g)?.length ?? 0;
+            n += str.match(//g)?.length ?? 0;
+            return n;
+        };
+
         return new Promise(async resolve => {
             if(type !== "auto") {
                 fileReaderLoad(file, new FileReader(), type).then(result => {
@@ -45,7 +78,8 @@ function Encoding() {
             for(let i = 0; i < types.length; i++) {
                 const result = await fileReaderLoad(file, new FileReader(), types[i]);
                 // const size = (getArr(result.match(/�/g)).concat(getArr(result.match(/đ/g))).concat(getArr(result.match(/ў/g))).concat(getArr(result.match(/Ą/g))).concat(getArr(result.match(/Ẅ/g)))).length;
-                const size = (result.match(/⌒/g) || result.match(/�/g) || result.match(/đ/g) || result.match(/ў/g) || result.match(/Ą/g) || result.match(/в/g) || result.match(/Ṁ/g) || result.match(/À/g) || result.match(/¾/g) || result.match(/ˇ/g) || result.match(/Α/g) || result.match(//g) || []).length;
+                const size = getNumErrorText(result);
+
                 if(size == 0) {
                     if(data.url != undefined) URL.revokeObjectURL(data.url);
                     data.min = size;
