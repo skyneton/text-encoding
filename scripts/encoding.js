@@ -34,17 +34,14 @@ function Encoding() {
         const getNumErrorText = str => {
             // let n = str.match(/⌒/g)?.length ?? 0;
             let n = str.match(/�/g)?.length ?? 0;
-            n += str.match(/đ/g)?.length ?? 0;
-            n += str.match(/ў/g)?.length ?? 0;
-            n += str.match(/Ą/g)?.length ?? 0;
-            n += str.match(/в/g)?.length ?? 0;
-            n += str.match(/Ṁ/g)?.length ?? 0;
-            n += str.match(/À/g)?.length ?? 0;
+            n += str.match(/ẅ/g)?.length ?? 0;
+            n += str.match(/¶/g)?.length ?? 0;
+            n += str.match(/Ā/g)?.length ?? 0;
+            n += str.match(/ŋ/g)?.length ?? 0;
+            n += str.match(/▒/g)?.length ?? 0;
             n += str.match(/ˇ/g)?.length ?? 0;
             n += str.match(/¨/g)?.length ?? 0;
             n += str.match(/´/g)?.length ?? 0;
-            n += str.match(/Α/g)?.length ?? 0;
-            n += str.match(/М/g)?.length ?? 0;
             n += str.match(//g)?.length ?? 0;
             n += str.match(//g)?.length ?? 0;
             n += str.match(//g)?.length ?? 0;
@@ -168,7 +165,7 @@ function Encoding() {
         }
 
         types() {
-            return ["UTF-8", "IBM866", "ISO-8859-2", "ISO-8859-3", "ISO-8859-4", "ISO-8859-5", "ISO-8859-6", "ISO-8857-7", "ISO-8859-8", "ISO-8859-8-I", "ISO-8859-10", "ISO-8859-13", "ISO-8859-14", "ISO-8859-15", "ISO-8859-16", "KOI8-R", "KOI8-U", "macintosh", "windows-874", "windows-1250", "windows-1251", "windows-1252", "windows-1253", "windows-1254", "windows-1255", "windows-1256", "windows-1257", "windows-1258", "x-mac-cyrillic", "Big5", "EUC-JP", "ISO-2022-JP", "Shift_JIS", "EUC-KR", "UTF-16BE", "UTF-16LE", "GBK", "gb18030"];
+            return ["UTF-8", "IBM866", "ISO-8859-2", "ISO-8859-3", "ISO-8859-4", "ISO-8859-5", "ISO-8859-6", "ISO-8857-7", "ISO-8859-8", "ISO-8859-8-I", "ISO-8859-10", "ISO-8859-13", "ISO-8859-14", "ISO-8859-15", "ISO-8859-16", "KOI8-R", "KOI8-U", "macintosh", "windows-874", "windows-1250", "windows-1251", "windows-1252", "windows-1253", "windows-1254", "windows-1255", "windows-1256", "windows-1257", "windows-1258", "x-mac-cyrillic", "Big5", "Shift_JIS", "EUC-KR", "EUC-JP", "ISO-2022-JP", "UTF-16BE", "UTF-16LE", "GBK", "gb18030"];
         }
     }
 }
