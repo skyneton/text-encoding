@@ -87,7 +87,9 @@ const fileEncode = file => {
     encoding.start(file, {
         "type": type,
         success(result, before) {
-            url = URL.createObjectURL(result);
+            result = result.replace(/\r\n/g, "\n").replace(/\r/g, "\n");
+            url = URL.createObjectURL(new Blob([result], { type: "text/plain" }));
+
             box.setAttribute("finished", true);
             const temp = [...downloadBtn.children];
             for(let i = 0; i < temp.length; i++) {
