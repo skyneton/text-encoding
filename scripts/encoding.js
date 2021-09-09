@@ -35,6 +35,7 @@ function Encoding() {
             // let n = str.match(/⌒/g)?.length ?? 0;
             let n = str.match(/�/g)?.length ?? 0;
             n += str.match(/ẅ/g)?.length ?? 0;
+            n += str.match(/╪/g)?.length ?? 0;
             n += str.match(/¶/g)?.length ?? 0;
             n += str.match(/Ā/g)?.length ?? 0;
             n += str.match(/ŋ/g)?.length ?? 0;
