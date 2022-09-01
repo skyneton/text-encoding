@@ -76,7 +76,6 @@ function Encoding() {
             const data = {};
             for(let i = 0; i < types.length; i++) {
                 const result = await fileReaderLoad(file, new FileReader(), types[i]);
-                // const size = (getArr(result.match(/�/g)).concat(getArr(result.match(/đ/g))).concat(getArr(result.match(/ў/g))).concat(getArr(result.match(/Ą/g))).concat(getArr(result.match(/Ẅ/g)))).length;
                 const size = getNumErrorText(result);
 
                 if(size == 0) {
