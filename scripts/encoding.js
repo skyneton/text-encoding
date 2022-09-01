@@ -59,6 +59,7 @@ function Encoding() {
             n += str.match(//g)?.length ?? 0;
             n += str.match(//g)?.length ?? 0;
             n += str.match(//g)?.length ?? 0;
+            n += str.match(/о/g)?.length ?? 0;
             return n;
         };
 
